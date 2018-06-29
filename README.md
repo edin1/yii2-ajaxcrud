@@ -1,5 +1,47 @@
-yii2-ajaxcrud 
+yii2-ajaxcrud
 =============
+
+## edin1's fork notes
+This fork exists only to fix bugs with yii2-ajaxcrud.
+
+Fixes:
+------
++ Clicking on bulk-button modal "Close" button results in no-action (correct action: close modal).
+
+If you want to use this particular fork in your project you have to add the following to your project's composer.json (you don't have to modify the code of the fork!):
+```
+{
+    ...,
+
+    "repositories": [
+        ...,
+
+        {
+            "type": "vcs",
+            "url": "https://github.com/edin1/yii2-ajaxcrud"
+        },
+
+        ...,
+    ],
+
+    ...,
+}
+```
+
+and also add the following to the "require" section:
+
+```
+"johnitvn/yii2-ajaxcrud": "dev-bulkButtonClose-fix"
+```
+
+or run:
+
+```
+$ php composer.phar require johnitvn/yii2-ajaxcrud "dev-bulkButtonClose-fix"
+```
+
+## End of edin1's fork notes
+> NOTE: Below are the contents of the original README.md
 
 [![Latest Stable Version](https://poser.pugx.org/johnitvn/yii2-ajaxcrud/v/stable)](https://packagist.org/packages/johnitvn/yii2-ajaxcrud)
 [![License](https://poser.pugx.org/johnitvn/yii2-ajaxcrud/license)](https://packagist.org/packages/johnitvn/yii2-ajaxcrud)
