@@ -306,33 +306,39 @@ function ModalRemote(modalId) {
 
         var instance = this;
         if (okLabel !== false) {
-	        this.addFooterButton(
-	            okLabel === undefined ? this.defaults.okLabel : okLabel,
-	            'submit',
-	            'btn btn-primary',
-	            function (e) {
-	                var data;
-	
-	                // Test if browser supports FormData which handles uploads
-	                if (window.FormData) {
-	                    data = new FormData($('#ModalRemoteConfirmForm')[0]);
-	                    if (typeof selectedIds !== 'undefined' && selectedIds)
-	                        data.append('pks', selectedIds.join());
-	                } else {
-	                    // Fallback to serialize
-	                    data = $('#ModalRemoteConfirmForm');
-	                    if (typeof selectedIds !== 'undefined' && selectedIds)
-	                        data.pks = selectedIds;
-	                    data = data.serializeArray();
-	                }
-	
-	                instance.doRemote(
-	                    dataUrl,
-	                    dataRequestMethod,
-	                    data
-	                );
-	            }
-	        );
+            let btnClass = 'btn-primary'
+            if (typeof okLabel === 'string' || okLabel instanceof String) {
+                if (okLabel.toLowerCase().includes('delete')) {
+                    btnClass = 'btn-danger';
+                }
+            }
+            this.addFooterButton(
+                okLabel === undefined ? this.defaults.okLabel : okLabel,
+                'submit',
+                'btn ' + btnClass,
+                function (e) {
+                    var data;
+
+                    // Test if browser supports FormData which handles uploads
+                    if (window.FormData) {
+                        data = new FormData($('#ModalRemoteConfirmForm')[0]);
+                        if (typeof selectedIds !== 'undefined' && selectedIds)
+                            data.append('pks', selectedIds.join());
+                    } else {
+                        // Fallback to serialize
+                        data = $('#ModalRemoteConfirmForm');
+                        if (typeof selectedIds !== 'undefined' && selectedIds)
+                            data.pks = selectedIds;
+                        data = data.serializeArray();
+                    }
+
+                    instance.doRemote(
+                        dataUrl,
+                        dataRequestMethod,
+                        data
+                    );
+                }
+            );
         }
 
         this.addFooterButton(
