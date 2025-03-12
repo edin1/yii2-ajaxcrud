@@ -381,7 +381,7 @@ function ModalRemote(modalId) {
                 $(elm).attr('data-confirm-message'),
                 $(elm).attr('data-confirm-alert') ? false : $(elm).attr('data-confirm-ok'),
                 $(elm).attr('data-confirm-cancel'),
-                $(elm).hasAttr('data-modal-size') ? $(elm).attr('data-modal-size') : 'normal',
+                $(elm).hasAttr('data-modal-size') ? $(elm).attr('data-modal-size') : 'large',
                 $(elm).hasAttr('href') ? $(elm).attr('href') : $(elm).attr('data-url'),
                 $(elm).hasAttr('data-request-method') ? $(elm).attr('data-request-method') : 'GET',
                 bulkData
