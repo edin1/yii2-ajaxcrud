@@ -308,7 +308,7 @@ function ModalRemote(modalId) {
         if (okLabel !== false) {
             let btnClass = 'btn-primary'
             if (typeof okLabel === 'string' || okLabel instanceof String) {
-                if (okLabel.toLowerCase().includes('delete')) {
+                if (okLabel.toLowerCase().includes('delete') || okLabel.toLowerCase().includes('dissociate')) {
                     btnClass = 'btn-danger';
                 }
             }
