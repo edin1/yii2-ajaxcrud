@@ -308,8 +308,16 @@ function ModalRemote(modalId) {
         if (okLabel !== false) {
             let btnClass = 'btn-primary'
             if (typeof okLabel === 'string' || okLabel instanceof String) {
-                if (okLabel.toLowerCase().includes('delete') || okLabel.toLowerCase().includes('dissociate')) {
+                if (okLabel.toLowerCase().includes('modal-btn-danger')) {
                     btnClass = 'btn-danger';
+                } else if (okLabel.toLowerCase().includes('modal-btn-primary')) {
+                    btnClass = 'btn-primary';
+                } else if (okLabel.toLowerCase().includes('modal-btn-success')) {
+                    btnClass = 'btn-success';
+                } else if (okLabel.toLowerCase().includes('modal-btn-warning')) {
+                    btnClass = 'btn-warning';
+                } else if (okLabel.toLowerCase().includes('modal-btn-info')) {
+                    btnClass = 'btn-info';
                 }
             }
             this.addFooterButton(
