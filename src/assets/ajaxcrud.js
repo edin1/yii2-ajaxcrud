@@ -44,11 +44,11 @@ $(document).ready(function () {
 
         if (selectedIds.length == 0) {
             // If no selected ID's show warning
-            modal.setSize('small')
+            modal.setSize('normal')
             modal.show();
             modal.setTitle('No selection');
             modal.setContent('You must select item(s) to use this action');
-            modal.addFooterButton("Close", 'button', 'btn btn-default', function (button, event) {
+            modal.addFooterButton('<i class="icon fa fa-warning"></i> OK', 'button', 'btn btn-warning', function (button, event) {
                 this.hide();
             });
         } else {
