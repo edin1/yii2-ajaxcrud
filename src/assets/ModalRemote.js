@@ -307,6 +307,7 @@ function ModalRemote(modalId) {
         var instance = this;
         if (okLabel !== false) {
             let btnClass = 'btn-primary'
+            let timeout = 0
             if (typeof okLabel === 'string' || okLabel instanceof String) {
                 if (okLabel.toLowerCase().includes('modal-btn-danger')) {
                     btnClass = 'btn-danger';
@@ -318,6 +319,12 @@ function ModalRemote(modalId) {
                     btnClass = 'btn-warning';
                 } else if (okLabel.toLowerCase().includes('modal-btn-info')) {
                     btnClass = 'btn-info';
+                }
+
+                // add timeout if user requested
+                const match = okLabel.toLowerCase().match(/modal-add-timeout-(\d+)/);
+                if (match) {
+                    timeout = parseInt(match[1], 10); // Convert the matched value to an integer
                 }
             }
             this.addFooterButton(
@@ -340,11 +347,13 @@ function ModalRemote(modalId) {
                         data = data.serializeArray();
                     }
 
-                    instance.doRemote(
-                        dataUrl,
-                        dataRequestMethod,
-                        data
-                    );
+                    setTimeout(() => {
+                        instance.doRemote(
+                            dataUrl,
+                            dataRequestMethod,
+                            data
+                        );
+                    }, timeout);
                 }
             );
         }
